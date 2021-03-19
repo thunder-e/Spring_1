@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
@@ -38,7 +39,7 @@ public class MemberController {
 	
 	//memberJoin print 	// 	/member/memberLogin
 	@RequestMapping(value = "/member/memberLogin")
-	public String memberLogin() {
+	public String memberLogin(Model) {
 		//String name = request.getParameter("name");
 		//int age = Integer.parseInt(request.getParameter("age"));
 		//System.out.println(name);
@@ -48,19 +49,18 @@ public class MemberController {
 		return "member/memberLogin";
 		//이 문자열을 DispatcherServlet(servlet-context.xml에 있는)에서 받아서 
 	}
+	
+	
 	//memberLogin2 print
 	@RequestMapping(value="/member/memberLogin", method = RequestMethod.POST)
-	public String memberLogin(HttpServletRequest request) throws Exception {
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
+	public ModelAndView memberLogin(MemberDTO memberDTO, ModelAndView modelAndView) throws Exception {
 		
-		MemberDTO memberDTO = new MemberDTO();
-		memberDTO.setId(id);
-		memberDTO.setPw(pw);
 		memberDTO = memberService.memberLogin(memberDTO);
-		System.out.println(memberDTO);
-		request.setAttribute("dto", memberDTO);
-		return "member/memberPage";
+		
+		modelAndView.addObject("dto", memberDTO);
+		modelAndView.setViewName("member/memberPage");
+		
+		return modelAndView;
 	}
 	
 	
