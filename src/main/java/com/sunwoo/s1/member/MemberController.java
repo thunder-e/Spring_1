@@ -39,7 +39,7 @@ public class MemberController {
 	
 	//memberJoin print 	// 	/member/memberLogin
 	@RequestMapping(value = "/member/memberLogin")
-	public String memberLogin(Model) {
+	public String memberLogin() {
 		//String name = request.getParameter("name");
 		//int age = Integer.parseInt(request.getParameter("age"));
 		//System.out.println(name);
