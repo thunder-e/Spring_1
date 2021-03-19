@@ -17,8 +17,9 @@ public class MemberController {
 	
 	//memberJoin	//	/member/memberJoin GET
 	@RequestMapping(value = "/member/memberJoin")
-	public String memberJoin() {
-		return "member/memberJoin";
+	public void memberJoin() {
+		//return "member/memberJoin";
+		//JSP페이지로 forwarding 하기위해 만들어지는거야
 	}
 	
 	
@@ -39,7 +40,7 @@ public class MemberController {
 	
 	//memberJoin print 	// 	/member/memberLogin
 	@RequestMapping(value = "/member/memberLogin")
-	public String memberLogin(Model) {
+	public String memberLogin() {
 		//String name = request.getParameter("name");
 		//int age = Integer.parseInt(request.getParameter("age"));
 		//System.out.println(name);
